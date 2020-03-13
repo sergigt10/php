@@ -1,0 +1,56 @@
+# Apuntes iniciales PHP: https://www.youtube.com/watch?v=oJbfyzaA2QA&list=PLillGF-Rfqbap2IB6ZS4BBBcYPagAjpjn
+
+** Include y Require **
+# Include permite incluir un fichero. Si este fichero no existe saldra un error pero permite cargar la página, en cambio, require no permite cargar la página si el fichero no está disponible.
+# Mejor utilizar require.
+# Require_once mira una vez si ha sido incluido el fichero y si ya ha sido incluido no lo vuelve a requerir.
+
+** Hacer un console.log() en PHP **
+# DIE("HOLA");
+
+** Superglobal **
+# Variables supeglobal -> Son variables que se pueden acceder desde todas las partes.
+
+** Funciones de String comunes **
+# substr(), strpos(), strtoupper(), strtolower(), ucwords(), trim(), str_replace(), gzcompress()
+
+** Condición ternaria **
+# $variable ? 'Es verdad' : 'No es verdad'
+
+** Filtros y validadores **
+# filter_has_var(), filter_input(), filter_var(), filter_input_array(), filter_var_array()
+# print_r -> para imprimir un array.
+
+** spl_autoload_register **
+// Incluye archivos automaticamente
+
+** Sesiones y Cookies **
+# Las sesiones son almacenadas en el servidor en cambio las cookies en el navegador.
+
+** PHP OOP **
+# Para acceder a una propiedad del objeto usamos -> por ejemplo: $persona->name .
+# Extends nos permite tener herencia.
+# Si creamos funciones static no hace falta instanciar la classe para llamar esa función.
+
+** MVC **
+# Ejemplo de MVC: mvc.png
+# El nombre de los controladores, modelos y vistas debe ir en mayúsculas.
+
+** .htacces **
+# Options -Indexes -> permite que no se muestre el directorio de carpetas y sus archivos
+
+# RewriteBase /traversymvc/public -> de donde parte toda la app
+# RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteCond %{REQUEST_FILENAME} !-f
+  -> Si el archivo no se encuentra
+# RewriteRule  ^(.+)$ index.php?url=$1 [QSA,L] -> se redirige a esta página incial si la condicion anterior de RewriteCond es incorrecta. También permite escrivir urls ej: /public/post que el parmetro sea post sin usar ?url=$post.
+
+# RewriteRule ^$ public/ [L]
+  RewriteRule (.*) public/$1 [L] -> redireccionamos siempre a la carpeta public y no la mostramos en la ruta del navegador.
+
+** PDO base de datos **
+# No sólo funciona con MySQL. Orientado a objetos.
+
+** Proyecto creado **
+# core.php es el encargado de llamar al controlador y sus mètodos
+
