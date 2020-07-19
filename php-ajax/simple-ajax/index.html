@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Simple AJAX - GET REQUEST</title>
+  </head>
+  <body>
+
+    <button onclick="sendRequest()">
+      Send Ajax Request
+    </button>
+
+    <div id="container"></div>
+
+    <script>
+      function sendRequest() {
+        var theObject = new XMLHttpRequest();
+        // Demanem dades a una aplicació
+        // Tipus de petició, a on fem la peticio (fitxer)
+        theObject.open('POST', 'backend.php', true);
+        // Establim la capçalera
+        theObject.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+        // Métode per veure que estem reben del servidor.
+        theObject.onreadystatechange = function() {
+          if(theObject.readyState === 4 & theObject.status === 200) {
+            // La resposta en format text = theObject.responseText
+            document.getElementById('container').innerHTML = theObject.responseText;
+          }
+        }
+        // Enviem la petició
+        theObject.send('username=Fazt&password=secret');
+      }
+    </script>
+  </body>
+</html>
